@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.boxes {
+    display: flex;
+    justify-content: space-evenly;
+    
+    width: 1000px;
+    height: 300px;
+    
+}
+
+.box {
+    
+    width: 200px;
+    height: 300px;
+    text-align: center;
+    border-style: solid;
+    border-color: black;
+    border-width: 7px;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>View Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="main.js"></script>
+</head>
+<body>
+
+
+    <!-- {% for book in all_books %}
+    <li>{{ book.title }}</li>
+    
+    {% endfor %} -->
+
+    <h1>{{selected_id.title}}</h1>
+    <h2>ID : {{book_id}}</h2>
+    <p>
+       Description : {{selected_id.desc}}
+    </p> 
+
+    <p>Authors</p>
+    {% for author in selected_authors %}
+        <li>{{author.first_name}} {{author.last_name}}</li>
+    {% endfor %}
+
+    <form action="/books/{{ book_id }}" method="POST">
+        {% csrf_token %}
+        <select name="author_id">
+            {% for author in not_selected_authors %}
+                
+                <option value="{{author.id}}">{{author.first_name}} {{author.last_name}}</option>
+                
+            {% endfor %}
+        </select>
+        <input type="submit" name ="submit" value="Add">
+    </form>
+    
+</body>
+</html>

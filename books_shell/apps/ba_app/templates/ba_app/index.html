@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="main.js"></script>
+</head>
+<body>
+
+
+    <h1>All Books</h1><br>
+    <ul>
+    {% for book in all_books %}
+        <li>{{ book.title }}</li>
+    {% endfor %}
+    </ul>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in all_books %}
+            <tr>
+                <td>
+                {{book.id}}
+                </td>
+                <td>
+                {{book.title}}
+                </td>
+                <td>
+                <a href="/books/{{book.id}}">View</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h1>Add a Book</h1> <br>
+    <form action="/" method="POST">
+        {% csrf_token %}
+        Title:
+        <input type="text" name="title">
+        <br>
+        Description:
+        <input type="text" name="description">
+        <br><br>
+        <input type="submit" value="Add">
+      </form>
+    
+</body>
+</html>
